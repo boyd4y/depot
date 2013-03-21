@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @activity.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @activity.description %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @activity.image_url %>
+</p>
+
+<p>
+  <b>Neverexpired:</b>
+  <%= @activity.neverexpired %>
+</p>
+
+<p>
+  <b>Validfrom:</b>
+  <%= @activity.validfrom %>
+</p>
+
+<p>
+  <b>Validto:</b>
+  <%= @activity.validto %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @activity.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

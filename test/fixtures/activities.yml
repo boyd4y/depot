@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  neverexpired: false
+  validfrom: 2013-03-21
+  validto: 2013-03-21
+  status: 1
+
+two:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  neverexpired: false
+  validfrom: 2013-03-21
+  validto: 2013-03-21
+  status: 1
