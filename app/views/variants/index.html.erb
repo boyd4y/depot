@@ -1,0 +1,35 @@
+<h1>Listing variants</h1>
+
+<table>
+  <tr>
+    <th>Fullcode</th>
+    <th>Password</th>
+    <th>Factory</th>
+    <th>Product</th>
+    <th>User</th>
+    <th>Retry</th>
+    <th>Ipaddress</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @variants.each do |variant| %>
+  <tr>
+    <td><%= variant.fullcode %></td>
+    <td><%= variant.password %></td>
+    <td><%= variant.factory %></td>
+    <td><%= variant.product %></td>
+    <td><%= variant.user %></td>
+    <td><%= variant.retry %></td>
+    <td><%= variant.ipaddress %></td>
+    <td><%= link_to 'Show', variant %></td>
+    <td><%= link_to 'Edit', edit_variant_path(variant) %></td>
+    <td><%= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Variant', new_variant_path %>

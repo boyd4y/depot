@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  activity: 
+  user: 
+  status: 1
+  ship_address: MyString
+  ship_date: 2013-03-22
+
+two:
+  activity: 
+  user: 
+  status: 1
+  ship_address: MyString
+  ship_date: 2013-03-22

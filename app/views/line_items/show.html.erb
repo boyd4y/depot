@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Activity:</b>
+  <%= @line_item.activity %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @line_item.user %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @line_item.status %>
+</p>
+
+<p>
+  <b>Ship address:</b>
+  <%= @line_item.ship_address %>
+</p>
+
+<p>
+  <b>Ship date:</b>
+  <%= @line_item.ship_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>

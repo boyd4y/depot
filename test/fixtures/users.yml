@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  phone: MyString
-  password_digest: MyString
+  phone: 15618965253
+  password_digest: User@123
 
 two:
-  phone: MyString
-  password_digest: MyString
+  phone: 15821333936
+  password_digest: User@123

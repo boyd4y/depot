@@ -1,4 +1,16 @@
 Depot::Application.routes.draw do
+  resources :line_items
+
+
+  resources :variants
+
+
+  resources :products
+
+
+  resources :factories
+
+
   get "admin/index"
 
   get "sessions/new"

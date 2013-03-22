@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fullcode: MyString
+  password: MyString
+  factory: 
+  product: 
+  user: 
+  retry: 1
+  ipaddress: MyString
+
+two:
+  fullcode: MyString
+  password: MyString
+  factory: 
+  product: 
+  user: 
+  retry: 1
+  ipaddress: MyString
