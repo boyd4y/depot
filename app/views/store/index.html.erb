@@ -4,7 +4,7 @@
 <h1>Your Pragmatic Catalog</h1>
 <% @activities.each do |activity| %>
 <div class="entry">
-	<%= image_tag(activity.image_url) %>
+	<%= image_tag(activity.imageurl) %>
 	<h3><%= activity.title %></h3>
 	<p><%= sanitize(activity.description) %></p>
 </div>

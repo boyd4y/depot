@@ -1,19 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  fullcode: MyString
-  password: MyString
-  factory: 
-  product: 
-  user: 
-  retry: 1
-  ipaddress: MyString
+  fullcode: FAC1PRD1XXXXXXXXXX1
+  password: 111
+  factory: one
+  product: one
+  ipaddress: 127.0.0.1
+  checked: false
+  retry_count: 0
 
 two:
-  fullcode: MyString
-  password: MyString
-  factory: 
-  product: 
-  user: 
-  retry: 1
-  ipaddress: MyString
+  fullcode: FAC1PRD1XXXXXXXXXX2
+  password: 222
+  factory: two
+  product: two
+  ipaddress: 127.0.0.1
+  checked: false
+  retry_count: 0
+
+three:
+  fullcode: FAC1PRD1XXXXXXXXXX3
+  password: 222
+  factory: two
+  product: two
+  user: two
+  ipaddress: 127.0.0.1
+  checked: false
+  retry_count: 0

@@ -1,9 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  phone: 15618965253
-  password_digest: User@123
+  phone: 110
+  password_digest: <%= BCrypt::Password.create('User@123') %>
+  credit: 100
 
 two:
-  phone: 15821333936
-  password_digest: User@123
+  phone: 120
+  password_digest: <%= BCrypt::Password.create('User@123') %>
+  credit: 100
+
+three:
+  phone: 130
+  password_digest: <%= BCrypt::Password.create('User@123') %>
+  credit: 200

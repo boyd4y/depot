@@ -2,7 +2,14 @@ class VariantsController < ApplicationController
   # GET /variants
   # GET /variants.json
   def index
-    @variants = Variant.all
+    pageindex = params[:page].to_i || 0
+    pagesize = Rails.application.config.default_limit
+
+    if params[:user_id]
+      @variants = Variant.where("user_id = #{params[:user_id]}").order("updated_at DESC").offset(pageindex * pagesize).limit(pagesize).all
+    else
+      @variants = Variant.order("updated_at DESC").offset(pageindex * pagesize).limit(pagesize).all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +87,30 @@ class VariantsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /verify.json
+  def verify
+    @variant = Variant.find_by_fullcode(params[:fullcode])
+    @user = User.find_by_id(params[:user_id])
+    needAddCredit = @variant && !@variant.checked
+    if !@variant || !@user
+      respond_to do |format|
+        format.html # renders .html.erb
+        format.json { render json: {:result => false}, status: :unauthorized}
+      end
+    elsif @variant.verify!(@user, params[:password])
+        # Add credit for the user... 
+        @user.addCredit!(@variant.product.point) if needAddCredit
+        respond_to do |format|
+          format.html # renders .html.erb
+          format.json { render json: {:result => true, :credit => @user.credit }, status: :ok}
+        end
+    else
+        respond_to do |format|
+          format.html # renders .html.erb
+          format.json { render json: {:result => false}, status: :unprocessable_entity}
+        end
+    end
+  end
+
 end

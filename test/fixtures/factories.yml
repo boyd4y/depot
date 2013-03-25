@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
-  email: MyString
-  code: MyString
+  name: factory1
+  description: factory1 description
+  email: factory1@test.com
+  code: FAC1
 
 two:
-  name: MyString
-  description: MyText
-  email: MyString
-  code: MyString
+  name: factory2
+  description: factory2 description
+  email: factory2@test.com
+  code: FAC2

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322025243) do
+ActiveRecord::Schema.define(:version => 20130324135028) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image_url"
+    t.string   "imageurl"
     t.boolean  "neverexpired"
     t.date     "validfrom"
     t.date     "validto"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130322025243) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "type"
+    t.integer  "point"
   end
 
   create_table "factories", :force => true do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130322025243) do
     t.integer  "factory_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "point"
   end
 
   add_index "products", ["factory_id"], :name => "index_products_on_factory_id"
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130322025243) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "credit"
   end
 
   create_table "variants", :force => true do |t|
@@ -72,13 +75,15 @@ ActiveRecord::Schema.define(:version => 20130322025243) do
     t.integer  "factory_id"
     t.integer  "product_id"
     t.integer  "user_id"
-    t.integer  "retry"
+    t.integer  "retry_count"
     t.string   "ipaddress"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "checked"
   end
 
   add_index "variants", ["factory_id"], :name => "index_variants_on_factory_id"
+  add_index "variants", ["fullcode"], :name => "index_variants_on_fullcode"
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
   add_index "variants", ["user_id"], :name => "index_variants_on_user_id"
 

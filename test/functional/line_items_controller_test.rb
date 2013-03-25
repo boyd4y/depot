@@ -18,10 +18,26 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      post :create, line_item: { ship_address: @line_item.ship_address, ship_date: @line_item.ship_date, status: @line_item.status }
+      post :create, line_item: {
+        user_id: users(:one).id,
+        activity_id: activities(:neverexpired_activity).id
+      }
     end
 
     assert_redirected_to line_item_path(assigns(:line_item))
+  end
+
+  test "should create line_item rest" do
+    user_id = users(:two).id
+    assert_difference('LineItem.count') do
+      post :create, line_item: {
+        user_id: user_id,
+        activity_id: activities(:neverexpired_activity).id,
+        format: :json
+      }
+    end
+    
+    assert_equal 99, User.find(user_id).credit
   end
 
   test "should show line_item" do

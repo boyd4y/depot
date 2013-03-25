@@ -2,11 +2,11 @@ require 'test_helper'
 
 class ActivitiesControllerTest < ActionController::TestCase
   setup do
-    @activity = activities(:one)
+    @activity = activities(:neverexpired_activity)
     @update = {
       title: 'Lorem Ipsum',
       description: 'Wibbles are fun!',
-      image_url: 'lorem.jpg',
+      imageurl: 'lorem.jpg',
     }
   end
 

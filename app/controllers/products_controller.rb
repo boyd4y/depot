@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    pageindex = params[:page].to_i || 0
+    pagesize = Rails.application.config.default_limit
+    @products = Product.order("created_at DESC").offset(pageindex * pagesize).limit(pagesize).all
 
     respond_to do |format|
       format.html # index.html.erb

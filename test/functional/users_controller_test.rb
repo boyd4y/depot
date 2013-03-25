@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
-    @update = { password_digest: 'User@123', phone: '110' }
+    @update = { password: 'User@123', password_confirmation: 'User@123', phone: '1110' }
   end
 
   test "should get index" do
@@ -46,5 +46,17 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to users_path
+  end
+
+  test "signin failed with rest API" do
+    # @newuser = { password: 'User@1231', phone: '110' }
+    post :signin, phone: '110', password: 'User@1231', format: :json
+    assert_response :unauthorized
+  end
+
+  test "signin pass with rest API" do
+    # @newuser = { password: 'User@123', phone: '110' }
+    post :signin, phone: '110', password: 'User@123', format: :json
+    assert_response :ok
   end
 end

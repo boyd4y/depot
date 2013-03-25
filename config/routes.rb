@@ -1,23 +1,26 @@
 Depot::Application.routes.draw do
   resources :line_items
-
-
   resources :variants
-
-
   resources :products
-
-
   resources :factories
 
-
-  get "admin/index"
-
-  get "sessions/new"
+  get 'admin' => 'admin#index'
+  controller :sessions do
+    get  'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
 
   get "sessions/create"
-
   get "sessions/destroy"
+
+  controller :users, :defaults => { :format => 'json' } do
+    post :signin
+  end
+
+  controller :variants, :defaults => { :format => 'json' } do
+    post :verify
+  end
 
   resources :users
 

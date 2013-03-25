@@ -2,7 +2,15 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
+
+    pageindex = params[:page].to_i || 0
+    pagesize = Rails.application.config.default_limit
+
+    if params[:user_id]
+      @line_items = LineItem.where("user_id = #{params[:user_id]}").order("created_at DESC").offset(pageindex * pagesize).limit(pagesize).all
+    else
+      @line_items = LineItem.order("created_at DESC").offset(pageindex * pagesize).limit(pagesize).all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,18 +48,32 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(params[:line_item])
+    user = User.find_by_id(params[:line_item][:user_id])
+    activity = Activity.find_by_id(params[:line_item][:activity_id])
+    @line_item = LineItem.new()
 
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
-        format.json { render json: @line_item, status: :created, location: @line_item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+    if user && activity && activity.canbeJoined && !user.joinedActivity(params[:line_item][:activity_id])
+      @line_item.activity = activity
+      @line_item.user = user
+
+      respond_to do |format|
+        if user.credit > activity.point && @line_item.save
+          user.removeCredit!(activity.point)
+          format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+          format.json { render json: @line_item, status: :created, location: @line_item }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+            format.html { render action: "new" }
+            format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
   end
+
 
   # PUT /line_items/1
   # PUT /line_items/1.json
@@ -80,4 +102,5 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

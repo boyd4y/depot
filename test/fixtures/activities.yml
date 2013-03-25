@@ -1,19 +1,51 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: MyString
+neverexpired_activity:
+  title: neverexpired_activity
   description: MyText
-  image_url: MyString
-  neverexpired: false
+  imageurl: MyString
+  neverexpired: true
   validfrom: 2013-03-21
-  validto: 2013-03-21
+  validto: 2013-04-21
   status: 1
+  point: 1
 
-two:
-  title: MyString
+notexpired_activity:
+  title: notexpired_activity
   description: MyText
-  image_url: MyString
+  imageurl: MyString
+  neverexpired: false
+  validfrom: 2013-03-21
+  validto: 2013-04-21
+  status: 1
+  point: 2
+
+notexpired_activity_notjoinable:
+  title: notexpired_activity
+  description: MyText
+  imageurl: MyString
+  neverexpired: false
+  validfrom: 2013-03-21
+  validto: 2013-04-21
+  status: 2
+  point: 0
+
+expired_activity_joinable:
+  title: expired_activity_joinable
+  description: MyText
+  imageurl: MyString
   neverexpired: false
   validfrom: 2013-03-21
   validto: 2013-03-21
-  status: 1
+  status: 2
+  point: 0
+
+expired_activity_notjoinable:
+  title: expired_activity_notjoinable
+  description: MyText
+  imageurl: MyString
+  neverexpired: false
+  validfrom: 2013-03-21
+  validto: 2013-03-21
+  status: 2
+  point: 0

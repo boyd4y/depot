@@ -3,7 +3,7 @@ class CreateActivities < ActiveRecord::Migration
     create_table :activities do |t|
       t.string :title
       t.text :description
-      t.string :image_url
+      t.string :imageurl
       t.boolean :neverexpired
       t.date :validfrom
       t.date :validto

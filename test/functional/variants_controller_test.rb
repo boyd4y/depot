@@ -3,6 +3,7 @@ require 'test_helper'
 class VariantsControllerTest < ActionController::TestCase
   setup do
     @variant = variants(:one)
+    @update = { fullcode: 'testcode', password: '1234'}
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class VariantsControllerTest < ActionController::TestCase
 
   test "should create variant" do
     assert_difference('Variant.count') do
-      post :create, variant: { fullcode: @variant.fullcode, ipaddress: @variant.ipaddress, password: @variant.password, retry: @variant.retry }
+      post :create, variant: @update
     end
 
     assert_redirected_to variant_path(assigns(:variant))
@@ -35,7 +36,7 @@ class VariantsControllerTest < ActionController::TestCase
   end
 
   test "should update variant" do
-    put :update, id: @variant, variant: { fullcode: @variant.fullcode, ipaddress: @variant.ipaddress, password: @variant.password, retry: @variant.retry }
+    put :update, id: @variant, variant: @update
     assert_redirected_to variant_path(assigns(:variant))
   end
 
@@ -45,5 +46,27 @@ class VariantsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to variants_path
+  end
+
+  test "verify pass with rest API" do
+    post :verify, fullcode: 'FAC1PRD1XXXXXXXXXX1', password: '111', user_id: users(:one).id, format: :json
+    assert_response :ok
+    assert_equal true, json_response['result']
+    assert_equal 100 + products(:one).point, json_response['credit']
+
+    post :verify, fullcode: 'FAC1PRD1XXXXXXXXXX1', password: '111', user_id: users(:one).id, format: :json
+    assert_response :ok
+    assert_equal true, json_response['result']
+    assert_equal 100 + products(:one).point, json_response['credit']
+
+    post :verify, fullcode: 'FAC1PRD1XXXXXXXXXX1', password: '111', user_id: users(:two).id, format: :json
+    assert_response :unprocessable_entity
+    assert_equal false, json_response['result']
+  end
+
+  test "verify failed with rest API" do
+    post :verify, fullcode:'FAC1PRD1XXXXXXXXXX1', password: '222', user_id: users(:one).id, format: :json
+    assert_response :unprocessable_entity
+    assert_equal false, json_response['result']
   end
 end

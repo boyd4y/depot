@@ -6,7 +6,7 @@ class CreateVariants < ActiveRecord::Migration
       t.references :factory
       t.references :product
       t.references :user
-      t.integer :retry
+      t.integer :retry_count
       t.string :ipaddress
 
       t.timestamps
@@ -14,5 +14,6 @@ class CreateVariants < ActiveRecord::Migration
     add_index :variants, :factory_id
     add_index :variants, :product_id
     add_index :variants, :user_id
+    add_index :variants, :fullcode
   end
 end

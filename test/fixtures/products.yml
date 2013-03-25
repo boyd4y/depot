@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
-  code: MyString
-  factory: 
+  name: prd1
+  description: prd1
+  code: PRD1
+  factory: one
+  point: 1
 
 two:
-  name: MyString
-  description: MyText
-  code: MyString
-  factory: 
+  name: prd2
+  description: prd2
+  code: PRD2
+  factory: one
+  point: 2
