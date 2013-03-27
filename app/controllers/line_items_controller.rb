@@ -57,7 +57,7 @@ class LineItemsController < ApplicationController
       @line_item.user = user
 
       respond_to do |format|
-        if user.credit > activity.point && @line_item.save
+        if user.credit >= activity.point && @line_item.save
           user.removeCredit!(activity.point)
           format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
           format.json { render json: @line_item, status: :created, location: @line_item }

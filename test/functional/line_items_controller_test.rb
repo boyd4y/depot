@@ -36,7 +36,7 @@ class LineItemsControllerTest < ActionController::TestCase
         format: :json
       }
     end
-    
+  
     assert_equal 99, User.find(user_id).credit
   end
 
