@@ -2,13 +2,14 @@
 
 <table>
   <tr>
-    <th>Fullcode</th>
-    <th>Password</th>
-    <th>Factory</th>
-    <th>Product</th>
-    <th>User</th>
-    <th>Retry</th>
-    <th>Ipaddress</th>
+    <th>二维码</th>
+    <th>密码</th>
+    <th>工厂</th>
+    <th>产品</th>
+    <th>用户</th>
+    <th>尝试次数</th>
+    <th>状态</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,18 +19,19 @@
   <tr>
     <td><%= variant.fullcode %></td>
     <td><%= variant.password %></td>
-    <td><%= variant.factory %></td>
-    <td><%= variant.product %></td>
-    <td><%= variant.user %></td>
-    <td><%= variant.retry_count %></td>
-    <td><%= variant.ipaddress %></td>
-    <td><%= link_to 'Show', variant %></td>
-    <td><%= link_to 'Edit', edit_variant_path(variant) %></td>
-    <td><%= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= variant.factory.name || '' %></td>
+    <td><%= variant.product.name || '' %></td>
+    <td><%= variant.user ? variant.user.phone : '' %></td>
+    <td><%= variant.retry_count || 0 %></td>
+    <td><%= variant.checked || 'false' %></td>
+    <td><img <%= "src=""http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=#{variant.fullcode}&chld=H|0"" "%>> </td>
+    <td><%= link_to '显示', variant %></td>
+    <td><%= link_to '编辑', edit_variant_path(variant) %></td>
+    <td><%= link_to '删除', variant, method: :delete, data: { confirm: '你确定删除？' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Variant', new_variant_path %>
+<%= link_to '添加新的纪录', new_variant_path %>

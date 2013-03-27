@@ -22,30 +22,19 @@ Activity.create( title: '积分兑换',
 	neverexpired: true,
 	status: 1,
 	validfrom: DateTime.now,
-	validto: DateTime.now + 10,
-	point: 1
+	validto: DateTime.now + 200,
+	point: 100
 )
 
 Activity.create( title: '积分兑换',
 	description:
 		%{ 会员优惠, 1000积分兑换一条高档毛巾 },
 	imageurl: 'label_sale_green.png',
-	neverexpired: false,
+	neverexpired: true,
 	status: 1,
 	validfrom: DateTime.now,
-	validto: DateTime.now + 10,
-	point: 2
-)
-
-Activity.create( title: '新品热销',
-	description:
-		%{ 清凉夏季，宝洁相伴, 各大超市有售 },
-	imageurl: 'label_sale_green.png',
-	neverexpired: false,
-	status: 2,
-	validfrom: DateTime.now,
-	validto: DateTime.now + 10,
-	point: 0
+	validto: DateTime.now + 200,
+	point: 1000
 )
 
 User.create( phone: '15618965253',
@@ -63,13 +52,15 @@ User.create( phone: '15821333936',
 Factory.create( name: '工厂1',
 	description: '工厂1 上海 分厂',
 	email: 'test@gmail.com',
-	code: 'FAC1'
+	code: 'FAC1',
+	logo: 'pandg.jpeg'
 )
 
 Factory.create( name: '工厂2',
 	description: '工厂2 上海 分厂',
 	email: 'test2@gmail.com',
-	code: 'FAC2'
+	code: 'FAC2',
+	logo: 'pandg.jpeg'
 )
 
 Product.create( name: '香皂',
