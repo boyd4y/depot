@@ -92,12 +92,20 @@ class VariantsController < ApplicationController
   def verify
     @variant = Variant.find_by_fullcode(params[:fullcode])
     @user = User.find_by_id(params[:user_id])
+
     needAddCredit = @variant && !@variant.checked
     if !@variant || !@user
       respond_to do |format|
         format.html # renders .html.erb
-        format.json { render json: {:result => false}, status: :unauthorized}
+        format.json { render json: {:result => false }, status: :unauthorized}
       end
+      return
+    elsif !params[:password]
+      respond_to do |format|
+          format.html # renders .html.erb
+          format.json { render json: {:result => !@variant.checked, :scanimgurl => @variant.factory.scanimgurl}, status: :ok}
+        end
+      return
     elsif @variant.verify!(@user, params[:password])
         # Add credit for the user... 
         @user.addCredit!(@variant.product.point) if needAddCredit
@@ -105,6 +113,7 @@ class VariantsController < ApplicationController
           format.html # renders .html.erb
           format.json { render json: {:result => true, :credit => @user.credit }, status: :ok}
         end
+        return
     else
         respond_to do |format|
           format.html # renders .html.erb

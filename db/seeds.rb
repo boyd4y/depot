@@ -15,6 +15,19 @@ Factory.delete_all
 LineItem.delete_all
 User.delete_all
 
+
+# New.delete_all
+
+# New.create( title: '富艺防伪中心正式上线',
+# 	description:
+# 		%{ 富艺防伪中心于2013年4月正式上线。。。 }
+# )
+
+# New.create( title: '富艺防伪中心与宝洁达成正式合作伙伴关系',
+# 	description:
+# 		%{ 富艺正式成为宝洁新型防伪技术供应商，富艺将在未来五年内为宝洁提供防伪条码技术支持。 }
+# )
+
 Activity.create( title: '积分兑换1',
 	description:
 		%{ 5积分兑换一盒宝洁香皂 },
@@ -74,14 +87,16 @@ Factory.create( name: '宝洁中国',
 	description: '宝洁中国有限公司，广东分公司',
 	email: 'test@gmail.com',
 	code: 'FAC1',
-	logo: 'pandg.jpeg'
+	logo: 'pandg.jpeg',
+	scanimgurl: 'baojie_scan.png'
 )
 
 Factory.create( name: '大宝',
 	description: '大宝',
 	email: 'test2@gmail.com',
 	code: 'FAC2',
-	logo: 'dabao.jpeg'
+	logo: 'dabao.jpeg',
+	scanimgurl: 'dabao_scan.png'
 )
 
 Product.create( name: '香皂',

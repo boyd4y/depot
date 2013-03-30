@@ -15,15 +15,15 @@
 <!-- START_HIGHLIGHT -->
   <div id="banner">
     <%= image_tag("logo.png") %>
-    <%= @page_title || "富艺防伪中心" %><!-- <label id="code.depot.e.title"/> -->
+    <%= @page_title ||  t('productName') %><!-- <label id="code.depot.e.title"/> -->
   </div>
   <div id="columns">
     <div id="side">
       <ul>
-        <li><a href="http://www....">Home</a></li>
-        <li><a href="http://www..../faq">Questions</a></li>
-        <li><a href="http://www..../news">News</a></li>
-        <li><a href="http://www..../contact">Contact</a></li>
+        <li><%= link_to t('activity'), activities_path %></li>
+        <li><%= link_to t('factory'), factories_path %></li>
+        <li><%= link_to t('product'), products_path %></li>
+        <li><%= link_to t('variant'), variants_path %></li>
       </ul>
     </div>
     <div id="main">
