@@ -113,7 +113,21 @@ Product.create( name: '沐浴乳',
 	point: 1
 )
 
-for i in 0..20
+Product.create( name: '防晒霜',
+	description: '男士防晒霜',
+	code: 'PRD3',
+	factory: Factory.find_by_code('FAC2'),
+	point: 1
+)
+
+Product.create( name: '大宝沐浴乳',
+	description: '大宝夏季清爽系列沐浴乳',
+	code: 'PRD4',
+	factory: Factory.find_by_code('FAC2'),
+	point: 1
+)
+
+for i in 0..10
 	Variant.create( fullcode: "FAC1PRD1XXXXXXXXX#{i}",
 		password: '1111',
 		factory: Factory.find_by_code('FAC1'),
@@ -121,16 +135,16 @@ for i in 0..20
 	)
 end
 
-Variant.create( fullcode: 'FAC1PRD2XXXXXXXXXX1',
+Variant.create( fullcode: 'FAC2PRD3XXXXXXXXXX1',
 	password: '1111',
-	factory: Factory.find_by_code('FAC1'),
-	product: Product.find_by_code('PRD2')
+	factory: Factory.find_by_code('FAC2'),
+	product: Product.find_by_code('PRD3')
 )
 
-Variant.create( fullcode: 'FAC1PRD2XXXXXXXXXX2',
+Variant.create( fullcode: 'FAC2PRD4XXXXXXXXXX2',
 	password: '1111',
-	factory: Factory.find_by_code('FAC1'),
-	product: Product.find_by_code('PRD2')
+	factory: Factory.find_by_code('FAC2'),
+	product: Product.find_by_code('PRD4')
 )
 
 User.create( phone: '15618965253',
