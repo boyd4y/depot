@@ -1,0 +1,37 @@
+zh-CN:
+  AdminUser: "超级管理员"
+  Factory: "工厂(Demo)"
+  Variant: "扫描产品记录"
+  LineItem: "参加的活动"
+  Activity: "活动"
+  User: "手机用户"
+  Product: "产品类型"
+  Post: "博客"
+  Dashboard: "信息中心"
+  Company: "公司(Demo)"
+
+  Verified: "已验证"
+  Retry: "尝试次数"
+  Code: "二维码"
+  Recent Scan: "最近的扫描"
+  Recent User: "最近的用户"
+  View QR Code: "查看二维码"
+  Scan HotSpot: "销售热点分布地图"
+  ProductLogoName: "富艺防伪"
+
+  time:
+    formats:
+      description: "%H 小时 %M 分钟"
+      default: "%y %m-%d %H::%M"
+      short: "%H::%M"
+      long: "%y %m-%d %H::%M"
+
+  date:
+    formats:
+      default: "%y %m-%d"
+      short: "%y %m-%d"
+      long: "%y %m-%d"
+
+  UserTag:  
+    Phone: "手机号码"
+    Credit: "积分"

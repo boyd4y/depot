@@ -7,6 +7,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'securerandom'
 
 Activity.delete_all
 Variant.delete_all
@@ -14,73 +15,13 @@ Product.delete_all
 Factory.delete_all
 LineItem.delete_all
 User.delete_all
+Post.delete_all
+Company.delete_all
 
-
-# New.delete_all
-
-# New.create( title: '富艺防伪中心正式上线',
-# 	description:
-# 		%{ 富艺防伪中心于2013年4月正式上线。。。 }
-# )
-
-# New.create( title: '富艺防伪中心与宝洁达成正式合作伙伴关系',
-# 	description:
-# 		%{ 富艺正式成为宝洁新型防伪技术供应商，富艺将在未来五年内为宝洁提供防伪条码技术支持。 }
-# )
-
-Activity.create( title: '积分兑换1',
-	description:
-		%{ 5积分兑换一盒宝洁香皂 },
-	imageurl: 'label_new_green.png',
-	neverexpired: true,
-	status: 1,
-	validfrom: DateTime.now,
-	validto: DateTime.now + 200,
-	point: 5
-)
-
-Activity.create( title: '积分兑换2',
-	description:
-		%{ 会员优惠, 10积分兑换一条高档毛巾 },
-	imageurl: 'label_sale_green.png',
-	neverexpired: true,
-	status: 1,
-	validfrom: DateTime.now,
-	validto: DateTime.now + 200,
-	point: 10
-)
-
-Activity.create( title: '积分兑换3',
-	description:
-		%{ 会员优惠, 20积分兑换一瓶洗发水 },
-	imageurl: 'label_sale_green.png',
-	neverexpired: true,
-	status: 1,
-	validfrom: DateTime.now,
-	validto: DateTime.now + 200,
-	point: 20
-)
-
-Activity.create( title: '积分兑换4',
-	description:
-		%{ 会员优惠, 30积分兑换一套洗浴产品 },
-	imageurl: 'label_sale_green.png',
-	neverexpired: true,
-	status: 1,
-	validfrom: DateTime.now,
-	validto: DateTime.now + 200,
-	point: 30
-)
-
-Activity.create( title: '积分兑换5',
-	description:
-		%{ 会员优惠, 50积分兑换豪华家庭套装 },
-	imageurl: 'label_sale_green.png',
-	neverexpired: true,
-	status: 1,
-	validfrom: DateTime.now,
-	validto: DateTime.now + 200,
-	point: 50
+Company.create( name: '宝洁中国',
+	description: '宝洁中国有限公司',
+	email: 'test@gmail.com',
+	password: 'password'
 )
 
 Factory.create( name: '宝洁中国',
@@ -88,63 +29,26 @@ Factory.create( name: '宝洁中国',
 	email: 'test@gmail.com',
 	code: 'FAC1',
 	logo: 'pandg.jpeg',
-	scanimgurl: 'baojie_scan.png'
+	scanimgurl: 'baojie_scan.png',
+	company: Company.find_by_name('宝洁中国')
 )
 
-Factory.create( name: '大宝',
-	description: '大宝',
-	email: 'test2@gmail.com',
-	code: 'FAC2',
-	logo: 'dabao.jpeg',
-	scanimgurl: 'dabao_scan.png'
-)
-
-Product.create( name: '香皂',
-	description: '夏季清爽系列香皂',
+Product.create( name: '海飞丝',
+	description: '海飞丝洗发水',
 	code: 'PRD1',
 	factory: Factory.find_by_code('FAC1'),
-	point: 1
+	point: 1,
+	image_path: 'haifeisi.png'
 )
 
-Product.create( name: '沐浴乳',
-	description: '夏季清爽系列沐浴乳',
-	code: 'PRD2',
-	factory: Factory.find_by_code('FAC1'),
-	point: 1
+Post.create( title: '富艺防伪中心正式上线',
+	message:
+		%{ 富艺防伪中心于2013年4月正式上线。。。 }
 )
 
-Product.create( name: '防晒霜',
-	description: '男士防晒霜',
-	code: 'PRD3',
-	factory: Factory.find_by_code('FAC2'),
-	point: 1
-)
-
-Product.create( name: '大宝沐浴乳',
-	description: '大宝夏季清爽系列沐浴乳',
-	code: 'PRD4',
-	factory: Factory.find_by_code('FAC2'),
-	point: 1
-)
-
-for i in 0..10
-	Variant.create( fullcode: "FAC1PRD1XXXXXXXXX#{i}",
-		password: '1111',
-		factory: Factory.find_by_code('FAC1'),
-		product: Product.find_by_code('PRD1')
-	)
-end
-
-Variant.create( fullcode: 'FAC2PRD3XXXXXXXXXX1',
-	password: '1111',
-	factory: Factory.find_by_code('FAC2'),
-	product: Product.find_by_code('PRD3')
-)
-
-Variant.create( fullcode: 'FAC2PRD4XXXXXXXXXX2',
-	password: '1111',
-	factory: Factory.find_by_code('FAC2'),
-	product: Product.find_by_code('PRD4')
+Post.create( title: '富艺防伪中心与宝洁达成正式合作伙伴关系',
+	message:
+		%{ 富艺正式成为宝洁新型防伪技术供应商，富艺将在未来五年内为宝洁提供防伪条码技术支持。 }
 )
 
 User.create( phone: '15618965253',
@@ -158,4 +62,97 @@ User.create( phone: '15821333936',
 	password_confirmation: 'User@123',
 	credit: 100
 )
+
+Activity.create( title: '新品上市，积分兑换',
+	description:
+		%{ 5积分兑换一盒宝洁香皂 },
+	imageurl: 'label_new_green.png',
+	neverexpired: true,
+	status: 1,
+	validfrom: DateTime.now,
+	validto: DateTime.now + 200,
+	point: 5,
+	factory: Factory.find_by_code('FAC1')
+)
+
+Activity.create( title: '积分领取热销商品',
+	description:
+		%{ 会员优惠, 10积分兑换一条高档毛巾 },
+	imageurl: 'label_sale_green.png',
+	neverexpired: true,
+	status: 1,
+	validfrom: DateTime.now,
+	validto: DateTime.now + 200,
+	point: 10,
+	factory: Factory.find_by_code('FAC1')
+)
+
+Product.create( name: 'Olay',
+	description: 'Olay系列',
+	code: 'PRD2',
+	factory: Factory.find_by_code('FAC1'),
+	point: 1,
+	image_path: 'olay.png'
+)
+
+Product.create( name: '飘柔',
+	description: '飘柔洗发水',
+	code: 'PRD3',
+	factory: Factory.find_by_code('FAC1'),
+	point: 1,
+	image_path: 'piaorou.png'
+)
+
+for i in 0..10
+	Variant.create( fullcode: "FAC1PRD1XXXXXXXXX#{i}",
+		password: '1111',
+		factory: Factory.find_by_code('FAC1'),
+		product: Product.find_by_code('PRD1')
+	)
+end
+
+locations = [
+   # latitude, longitude
+   # shanghai
+   {:randomcount => 11, :latitude => 31.230344, :longitude => 121.47377},
+   {:randomcount => 13, :latitude => 31.205289, :longitude => 121.614288},
+   {:randomcount => 25, :latitude => 30.915186, :longitude => 121.468964},
+
+   # wuhan
+   {:randomcount => 21, :latitude => 30.626834, :longitude => 114.246826},
+
+   # qingdao
+   {:randomcount => 12, :latitude => 36.067082, :longitude => 120.38264},
+
+   # nanjing
+   {:randomcount => 55, :latitude => 32.060255, :longitude => 118.796877},
+
+   # guangzhou
+   {:randomcount => 60, :latitude => 23.129163, :longitude => 113.264435},
+
+   # xian
+   {:randomcount => 23, :latitude => 34.341568, :longitude => 108.940175},
+
+	#  beijing
+   {:randomcount => 55, :latitude => 39.90403, :longitude => 116.407526}
+
+]
+
+index = 1
+locations.each do |location|
+	for i in 0..location[:randomcount]
+	Variant.create( fullcode: "FAC1PRD1XXXXXXXXXYY#{index}#{i}",
+		password: '1111',
+		factory: Factory.find_by_code('FAC1'),
+		product: Product.find_by_code('PRD1'),
+		checked: true,
+		user: User.find_by_phone("15618965253"),
+		latitude: location[:latitude] + SecureRandom.random_number / 100,
+		longitude: location[:longitude] + SecureRandom.random_number / 100
+	)
+	end
+	index += 1
+end
+
+
 

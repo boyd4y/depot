@@ -9,6 +9,7 @@
     "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %><!-- <label id="code.jlt"/> -->
   <%= csrf_meta_tags %><!-- <label id="code.csrf"/> -->
+  <%= yield :scripts %>
 </head>
 <!-- END:head -->
 <body class="<%= controller.controller_name %>">

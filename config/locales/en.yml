@@ -1,18 +1,5 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-layouts:
-  application:
-      activity: 活动
-      factory: 工厂
-      product: 产品类型
-      variant: 产品
-      productName: 富艺防伪中心
-
-activities:
-  activity:
-      show: 显示
-      edit: 编辑
-      destroy: 删除
-      new: 新建
+  ProductLogoName: "FuYi"
+  time:
+    formats:
+      description: "Aktuelle Uhrzeit %H Stunden und %M Minuten"

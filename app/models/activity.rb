@@ -1,9 +1,9 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :description, :imageurl, :neverexpired, :status, :title, :validfrom, :validto, :point
+  attr_accessible :description, :imageurl, :neverexpired, :status, :title, :validfrom, :validto, :point, :factory_id, :factory
 
   validates :title, :description, presence: true
   validates :title, uniqueness: true
-
+  belongs_to :factory
   validates :imageurl, allow_blank: false, format: {
 	with: %r{\.(gif|jpg|png)\Z}i,
 	message: 'must be a URL for GIF, JPG or PNG image.'

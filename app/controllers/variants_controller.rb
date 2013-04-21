@@ -106,9 +106,10 @@ class VariantsController < ApplicationController
           format.json { render json: {:result => !@variant.checked, :scanimgurl => @variant.factory.scanimgurl}, status: :ok}
         end
       return
-    elsif @variant.verify!(@user, params[:password])
+    elsif @variant.verify!(@user, params[:password], params[:latitude], params[:longitude])
         # Add credit for the user... 
         @user.addCredit!(@variant.product.point) if needAddCredit
+
         respond_to do |format|
           format.html # renders .html.erb
           format.json { render json: {:result => true, :credit => @user.credit }, status: :ok}

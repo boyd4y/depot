@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	validates :password, :password_confirmation, presence: true
 	# validates_presence_of :password, :password_confirmation, :on => :create
 
+	# jtable :basic, :phone, :credit
+
 	has_secure_password
 	
 	has_many :line_items, dependent: :destroy
