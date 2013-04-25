@@ -128,7 +128,7 @@ locations = [
    {:randomcount => 55, :latitude => 32.060255, :longitude => 118.796877},
 
    # guangzhou
-   {:randomcount => 60, :latitude => 23.129163, :longitude => 113.264435},
+   #{:randomcount => 60, :latitude => 23.129163, :longitude => 113.264435},
 
    # xian
    {:randomcount => 23, :latitude => 34.341568, :longitude => 108.940175},
