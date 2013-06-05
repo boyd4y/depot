@@ -139,7 +139,7 @@ locations = [
    {:randomcount => 13, :latitude => 34.341568, :longitude => 108.940175},
 
 	#  beijing
-   {:randomcount => 15, :latitude => 39.90403, :longitude => 116.407526}
+   {:randomcount => 200, :latitude => 39.90403, :longitude => 116.407526}
 ]
 
 index = 1
