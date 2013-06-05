@@ -109,7 +109,7 @@ Product.create( name: '飘柔',
 	image_path: 'piaorou.png'
 )
 
-for i in 0..10
+for i in 0..100
 	Variant.create( fullcode: "FAC1PRD1XXXXXXXXX#{i}",
 		password: '1111',
 		factory: Factory.find_by_code('FAC1'),
@@ -120,28 +120,27 @@ end
 locations = [
    # latitude, longitude
    # shanghai
-   {:randomcount => 11, :latitude => 31.230344, :longitude => 121.47377},
-   {:randomcount => 13, :latitude => 31.205289, :longitude => 121.614288},
-   {:randomcount => 25, :latitude => 30.915186, :longitude => 121.468964},
+   {:randomcount => 3, :latitude => 31.230344, :longitude => 121.47377},
+   {:randomcount => 2, :latitude => 31.205289, :longitude => 121.614288},
+   {:randomcount => 5, :latitude => 30.915186, :longitude => 121.468964},
 
    # wuhan
-   {:randomcount => 21, :latitude => 30.626834, :longitude => 114.246826},
+   {:randomcount => 7, :latitude => 30.626834, :longitude => 114.246826},
 
    # qingdao
    {:randomcount => 12, :latitude => 36.067082, :longitude => 120.38264},
 
    # nanjing
-   {:randomcount => 55, :latitude => 32.060255, :longitude => 118.796877},
+   {:randomcount => 10, :latitude => 32.060255, :longitude => 118.796877},
 
    # guangzhou
    #{:randomcount => 60, :latitude => 23.129163, :longitude => 113.264435},
 
    # xian
-   {:randomcount => 23, :latitude => 34.341568, :longitude => 108.940175},
+   {:randomcount => 13, :latitude => 34.341568, :longitude => 108.940175},
 
 	#  beijing
-   {:randomcount => 55, :latitude => 39.90403, :longitude => 116.407526}
-
+   {:randomcount => 15, :latitude => 39.90403, :longitude => 116.407526}
 ]
 
 index = 1

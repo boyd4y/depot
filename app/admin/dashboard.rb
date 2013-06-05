@@ -31,7 +31,8 @@ ActiveAdmin.register_page "Dashboard" do
             div do
 
               @json = Variant.all().to_gmaps4rails do |variant, marker|
-                marker.json({ :id => variant.id, :title => variant.product.name })
+                marker.title variant.product.name 
+                marker.json({ :id => variant.id })
               end
 
               render('/admin/variants/hotspot', :data => @json)
