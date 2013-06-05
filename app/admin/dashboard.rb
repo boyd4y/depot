@@ -30,9 +30,11 @@ ActiveAdmin.register_page "Dashboard" do
           panel I18n.t("Scan HotSpot") do
             div do
 
-              @json = Variant.all().to_gmaps4rails do |variant, marker|
-                marker.title variant.product.name 
-                marker.json({ :id => variant.id })
+              @json = Variant.where(checked: true).all().to_gmaps4rails do |variant, marker|
+                marker.json({ :id => variant.id, 
+                  :title => variant.product.name, 
+                  :description => "<p>#{I18n.t("UserTag.Phone")}:xxxxxxx#{variant.user.phone.last(4)}</p><p>#{variant.product.name} / #{variant.fullcode}</p><p>#{I18n.t("DashboardMap.CreatedTime")}:#{variant.created_at.in_time_zone("Asia/Shanghai").strftime("%Y-%m-%d %R")}</p><p>#{I18n.t("DashboardMap.ScanTime")}:#{variant.updated_at.in_time_zone("Asia/Shanghai").strftime("%Y-%m-%d %R")}</p>"
+                })
               end
 
               render('/admin/variants/hotspot', :data => @json)

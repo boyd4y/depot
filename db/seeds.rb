@@ -151,8 +151,8 @@ locations.each do |location|
 		product: Product.find_by_code('PRD1'),
 		checked: true,
 		user: User.find_by_phone("15618965253"),
-		latitude: location[:latitude] + SecureRandom.random_number / 100,
-		longitude: location[:longitude] + SecureRandom.random_number / 100
+		latitude: location[:latitude] + SecureRandom.random_number / 30,
+		longitude: location[:longitude] + SecureRandom.random_number / 30
 	)
 	end
 	index += 1

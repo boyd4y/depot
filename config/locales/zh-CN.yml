@@ -35,3 +35,7 @@ zh-CN:
   UserTag:  
     Phone: "手机号码"
     Credit: "积分"
+
+  DashboardMap:
+    CreatedTime: "出厂时间"
+    ScanTime: "扫描时间"
