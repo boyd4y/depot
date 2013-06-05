@@ -1,8 +1,8 @@
 ActiveAdmin.register Variant do
   config.comments = false
   menu :priority => 9, :label => proc{ I18n.t("Variant") }
-  show :title => I18n.t("Variant") 
-  index :title => I18n.t("Variant") 
+
+  # filter :checked, :as => :select, :collection => [true, false]
 
 	member_action :showcode do
 		variant = Variant.find(params[:id])
