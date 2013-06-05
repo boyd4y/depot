@@ -34,7 +34,7 @@ ActiveAdmin.register_page "Dashboard" do
                 marker.json({ :id => variant.id, :title => variant.product.name })
               end
 
-              render('/admin/variant/hotspot', :data => @json)
+              render('/admin/variants/hotspot', :data => @json)
             end
           end
         end

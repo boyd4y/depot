@@ -6,7 +6,12 @@ ActiveAdmin.register Variant do
 
 	member_action :showcode do
 		variant = Variant.find(params[:id])
-		redirect_to URI.encode("http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=#{variant.fullcode}&chld=H|0")
+		# redirect_to URI.encode("http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=#{variant.fullcode}&chld=H|0")
+		@image = URI.encode("http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=#{variant.fullcode}&chld=H|0")
+		respond_to do |format|
+      		format.html # show.html.erb
+      		format.json { render json: @variant }
+    	end
 	end
 
  	action_item :only => :show do
