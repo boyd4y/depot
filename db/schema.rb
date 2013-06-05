@@ -98,13 +98,6 @@ ActiveRecord::Schema.define(:version => 20130421075130) do
   add_index "line_items", ["activity_id"], :name => "index_line_items_on_activity_id"
   add_index "line_items", ["user_id"], :name => "index_line_items_on_user_id"
 
-  create_table "news", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "message"
@@ -120,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20130421075130) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "point"
-    t.string   "image"
     t.string   "image_path"
   end
 

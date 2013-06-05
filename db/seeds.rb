@@ -63,6 +63,12 @@ User.create( phone: '15821333936',
 	credit: 100
 )
 
+User.create( phone: '13301649473',
+	password: '123456',
+	password_confirmation: '123456',
+	credit: 1000
+)
+
 Activity.create( title: '新品上市，积分兑换',
 	description:
 		%{ 5积分兑换一盒宝洁香皂 },
