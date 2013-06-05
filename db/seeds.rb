@@ -120,7 +120,6 @@ end
 locations = [
    # latitude, longitude
    # shanghai
-   {:randomcount => 3, :latitude => 31.230344, :longitude => 121.47377},
    {:randomcount => 2, :latitude => 31.205289, :longitude => 121.614288},
    {:randomcount => 5, :latitude => 30.915186, :longitude => 121.468964},
 
